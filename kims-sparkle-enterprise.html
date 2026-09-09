@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kim's Sparkle Enterprise — Laundry, Sofa, Cabro & Carpet Cleaning</title>
+<link rel="icon" type="image/svg+xml" img ="C:\Users\brian\OneDrive\Desktop\Project BX\kims photos\1.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal-deep:#0B4F4A;
+    --teal-ink:#0E3B38;
+    --aqua:#2FE6D2;
+    --gold:#F4B740;
+    --foam:#EEF8F6;
+    --white:#FFFFFF;
+    --charcoal:#132422;
+    --muted:#4C6360;
+    --line: rgba(11,79,74,0.14);
+    --radius: 18px;
+    --shadow: 0 20px 40px -20px rgba(11,79,74,0.35);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter', sans-serif;
+    color:var(--charcoal);
+    background:var(--foam);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:'Poppins', sans-serif; letter-spacing:-0.01em;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--teal-deep);
+    opacity:0.75;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:14px; height:1px;
+    background:var(--gold);
+    display:inline-block;
+  }
+  a{color:inherit; text-decoration:none;}
+  img,svg{display:block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- Sparkle particles (signature ambient layer) ---------- */
+  .sparkle-field{position:absolute; inset:0; overflow:hidden; pointer-events:none;}
+  .spark{
+    position:absolute;
+    width:6px; height:6px;
+    background: var(--aqua);
+    clip-path: polygon(50% 0%, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0% 50%, 39% 39%);
+    opacity:0;
+    animation: twinkle 3.4s ease-in-out infinite;
+  }
+  @keyframes twinkle{
+    0%, 100% { opacity:0; transform:scale(0.4) rotate(0deg);}
+    50% { opacity:0.9; transform:scale(1) rotate(35deg);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .spark{animation:none; opacity:0.5;}
+    *{scroll-behavior:auto !important;}
+  }
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(238,248,246,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px; max-width:1180px; margin:0 auto;
+  }
+  .logo{display:flex; align-items:center; gap:10px; font-family:'Poppins'; font-weight:800; font-size:1.15rem; color:var(--teal-deep);}
+  .logo .mark{
+    width:34px; height:34px; border-radius:10px;
+    background:linear-gradient(135deg, var(--teal-deep), var(--teal-ink));
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .logo .mark svg{width:18px; height:18px;}
+  .navlinks{display:flex; gap:30px; font-weight:600; font-size:0.94rem;}
+  .navlinks a{position:relative; color:var(--teal-ink); padding:4px 0;}
+  .navlinks a::after{
+    content:""; position:absolute; left:0; bottom:-2px; width:0; height:2px;
+    background:var(--gold); transition:width .25s ease;
+  }
+  .navlinks a:hover::after{width:100%;}
+  .cta-btn{
+    background:var(--teal-deep); color:var(--white);
+    padding:10px 20px; border-radius:999px; font-weight:600; font-size:0.9rem;
+    border:1px solid var(--teal-deep);
+    transition: transform .2s ease, background .2s ease;
+  }
+  .cta-btn:hover{background:var(--teal-ink); transform:translateY(-1px);}
+  .navtoggle{display:none;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:96px 0 90px;
+    background: radial-gradient(circle at 15% 20%, rgba(47,230,210,0.16), transparent 45%),
+                radial-gradient(circle at 85% 0%, rgba(244,183,64,0.14), transparent 40%),
+                var(--foam);
+    overflow:hidden;
+  }
+  .hero-inner{
+    position:relative; z-index:2;
+    max-width:720px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 4.6vw, 3.6rem);
+    font-weight:900; color:var(--teal-deep);
+    line-height:1.08; margin:18px 0 20px;
+  }
+  .hero h1 .shine{
+    background:linear-gradient(100deg, var(--teal-deep) 40%, var(--aqua) 50%, var(--teal-deep) 60%);
+    background-size:220% 100%;
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    animation: shine-sweep 4.5s ease-in-out infinite;
+  }
+  @keyframes shine-sweep{
+    0%{background-position:200% 0;}
+    50%{background-position:-20% 0;}
+    100%{background-position:200% 0;}
+  }
+  .hero p.lead{font-size:1.08rem; color:var(--muted); max-width:520px; margin-bottom:30px;}
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--teal-deep); color:var(--white); padding:14px 26px; border-radius:12px;
+    font-weight:700; box-shadow:var(--shadow); border:1px solid var(--teal-deep);
+    transition:transform .2s ease;
+  }
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-ghost{
+    padding:14px 26px; border-radius:12px; font-weight:700; color:var(--teal-deep);
+    border:1.5px solid var(--teal-deep); transition:background .2s ease, color .2s ease;
+  }
+  .btn-ghost:hover{background:var(--teal-deep); color:var(--white);}
+
+  .hero-badges{display:flex; gap:22px; margin-top:40px; flex-wrap:wrap;}
+  .hero-badges .badge{font-family:'IBM Plex Mono'; font-size:0.78rem; color:var(--teal-ink);}
+  .hero-badges .badge b{display:block; font-family:'Poppins'; font-size:1.5rem; color:var(--teal-deep); font-weight:800;}
+
+  /* Hero visual: stacked "clean card" panel */
+  .hero-visual{
+    position:relative;
+    background:linear-gradient(160deg, var(--teal-deep), var(--teal-ink));
+    border-radius:26px;
+    padding:34px;
+    color:var(--white);
+    box-shadow:var(--shadow);
+    min-height:380px;
+  }
+  .hero-visual .droplet-row{display:flex; justify-content:space-between; align-items:flex-start;}
+  .hero-visual .tag{
+    font-family:'IBM Plex Mono'; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase;
+    background:rgba(255,255,255,0.12); padding:6px 12px; border-radius:999px;
+  }
+  .meter-list{margin-top:28px; display:flex; flex-direction:column; gap:18px;}
+  .meter{display:flex; flex-direction:column; gap:6px;}
+  .meter .label{display:flex; justify-content:space-between; font-size:0.85rem; font-weight:600;}
+  .meter .bar{height:8px; border-radius:99px; background:rgba(255,255,255,0.15); overflow:hidden;}
+  .meter .fill{height:100%; border-radius:99px; background:linear-gradient(90deg, var(--aqua), var(--gold)); width:0%; transition:width 1.4s cubic-bezier(.2,.8,.2,1);}
+  .hero-visual .quote{
+    margin-top:28px; font-size:0.92rem; opacity:0.85; border-top:1px solid rgba(255,255,255,0.18); padding-top:18px;
+  }
+
+  section{padding:88px 0;}
+  .section-head{max-width:640px; margin-bottom:48px;}
+  .section-head h2{font-size:clamp(1.7rem,3vw,2.3rem); color:var(--teal-deep); margin-top:14px; font-weight:800;}
+  .section-head p{color:var(--muted); margin-top:12px; font-size:1.02rem;}
+
+  /* ---------- About ---------- */
+  .about{background:var(--white);}
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;}
+  .about-copy p{color:var(--muted); margin-bottom:16px;}
+  .about-stats{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:26px;}
+  .stat-card{
+    border:1px solid var(--line); border-radius:16px; padding:20px;
+    background:var(--foam);
+  }
+  .stat-card b{font-family:'Poppins'; font-size:1.8rem; color:var(--teal-deep); display:block;}
+  .stat-card span{font-size:0.85rem; color:var(--muted);}
+  .about-panel{
+    background:var(--teal-deep); border-radius:24px; padding:36px; color:var(--white);
+    position:relative; overflow:hidden;
+  }
+  .about-panel h3{font-size:1.3rem; margin-bottom:16px;}
+  .about-panel ul{list-style:none; display:flex; flex-direction:column; gap:14px;}
+  .about-panel li{display:flex; gap:12px; align-items:flex-start; font-size:0.95rem;}
+  .about-panel li svg{flex-shrink:0; margin-top:3px;}
+
+  /* ---------- Services ---------- */
+  .services{background:var(--foam);}
+  .service-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:26px;}
+  .service-card{
+    background:var(--white); border-radius:var(--radius); padding:30px;
+    border:1px solid var(--line);
+    display:flex; flex-direction:column; gap:16px;
+    transition:transform .25s ease, box-shadow .25s ease;
+    position:relative;
+  }
+  .service-card:hover{transform:translateY(-6px); box-shadow:var(--shadow);}
+  .service-icon{
+    width:52px; height:52px; border-radius:14px;
+    background:linear-gradient(135deg, var(--teal-deep), var(--teal-ink));
+    display:flex; align-items:center; justify-content:center;
+  }
+  .service-icon svg{width:26px; height:26px; stroke:var(--aqua);}
+  .service-card h3{font-size:1.22rem; color:var(--teal-deep);}
+  .service-card p.desc{color:var(--muted); font-size:0.95rem;}
+  .service-meta{display:flex; flex-wrap:wrap; gap:8px; margin-top:auto;}
+  .chip{
+    font-family:'IBM Plex Mono'; font-size:0.7rem; letter-spacing:0.03em;
+    padding:5px 11px; border-radius:999px; background:var(--foam); color:var(--teal-ink);
+    border:1px solid var(--line);
+  }
+  .service-turnaround{
+    display:flex; justify-content:space-between; align-items:center;
+    border-top:1px dashed var(--line); padding-top:14px; margin-top:6px;
+    font-family:'IBM Plex Mono'; font-size:0.76rem; color:var(--muted);
+  }
+  .service-turnaround b{color:var(--teal-deep); font-family:'IBM Plex Mono';}
+
+  /* ---------- Gallery ---------- */
+  .gallery{background:var(--white);}
+  .gallery-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:22px;}
+  .photo-card{
+    border-radius:var(--radius); overflow:hidden; border:1px solid var(--line);
+    background:var(--foam); transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .photo-card:hover{transform:translateY(-4px); box-shadow:var(--shadow);}
+  .photo-frame{
+    aspect-ratio:4/3; position:relative; overflow:hidden;
+    background:linear-gradient(160deg, rgba(11,79,74,0.06), rgba(47,230,210,0.1));
+  }
+  .photo-frame img{width:100%; height:100%; object-fit:cover; display:block;}
+  .photo-caption{
+    padding:14px 16px; display:flex; align-items:center; justify-content:space-between; gap:8px;
+  }
+  .photo-caption b{font-size:0.9rem; color:var(--teal-ink); font-weight:700;}
+  .photo-caption span{font-family:'IBM Plex Mono'; font-size:0.68rem; color:var(--muted);}
+  @media(max-width:880px){ .gallery-grid{grid-template-columns:1fr 1fr;} }
+  @media(max-width:520px){ .gallery-grid{grid-template-columns:1fr;} }
+
+  /* ---------- Why us ---------- */
+  .why{background:var(--white);}
+  .why-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:22px;}
+  .why-card{padding:26px 22px; border-radius:16px; background:var(--foam); border:1px solid var(--line);}
+  .why-card .num{font-family:'IBM Plex Mono'; font-size:0.75rem; color:var(--gold); font-weight:600;}
+  .why-card h4{margin:12px 0 8px; color:var(--teal-deep); font-size:1.05rem;}
+  .why-card p{font-size:0.9rem; color:var(--muted);}
+
+  /* ---------- Process ---------- */
+  .process{background:var(--teal-deep); color:var(--white);}
+  .process .section-head h2{color:var(--white);}
+  .process .section-head p{color:rgba(255,255,255,0.75);}
+  .process-row{display:flex; gap:0; flex-wrap:wrap;}
+  .process-step{
+    flex:1; min-width:220px; padding:24px; position:relative;
+    border-left:1px solid rgba(255,255,255,0.18);
+  }
+  .process-step:first-child{border-left:none;}
+  .process-step .step-eyebrow{font-family:'IBM Plex Mono'; font-size:0.72rem; color:var(--aqua); letter-spacing:0.1em; text-transform:uppercase;}
+  .process-step h4{margin:10px 0 8px; font-size:1.08rem;}
+  .process-step p{font-size:0.88rem; color:rgba(255,255,255,0.75);}
+
+  /* ---------- Contact ---------- */
+  .contact{background:var(--foam);}
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:50px;}
+  .contact-info h2{color:var(--teal-deep); font-size:1.9rem; margin:14px 0 16px; font-weight:800;}
+  .contact-info p{color:var(--muted); margin-bottom:26px;}
+  .contact-list{display:flex; flex-direction:column; gap:18px;}
+  .contact-list .item{display:flex; gap:14px; align-items:flex-start;}
+  .contact-list .icon{
+    width:40px; height:40px; border-radius:10px; background:var(--white);
+    border:1px solid var(--line); display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .contact-list .icon svg{width:18px; height:18px; stroke:var(--teal-deep);}
+  .contact-list b{display:block; color:var(--teal-ink); font-size:0.95rem;}
+  .contact-list span{color:var(--muted); font-size:0.9rem;}
+
+  .form-card{
+    background:var(--white); border-radius:22px; padding:32px; border:1px solid var(--line); box-shadow:var(--shadow);
+  }
+  .form-card h3{color:var(--teal-deep); margin-bottom:6px;}
+  .form-card p.note{color:var(--muted); font-size:0.86rem; margin-bottom:22px;}
+  .form-row{display:flex; flex-direction:column; gap:6px; margin-bottom:16px;}
+  .form-row label{font-size:0.82rem; font-weight:600; color:var(--teal-ink);}
+  .form-row input, .form-row select, .form-row textarea{
+    padding:12px 14px; border-radius:10px; border:1px solid var(--line);
+    font-family:'Inter'; font-size:0.94rem; background:var(--foam); color:var(--charcoal);
+  }
+  .form-row input:focus, .form-row select:focus, .form-row textarea:focus{
+    outline:2px solid var(--aqua); outline-offset:1px; background:var(--white);
+  }
+  .submit-btn{
+    width:100%; padding:14px; border-radius:10px; border:none; background:var(--teal-deep); color:var(--white);
+    font-weight:700; font-size:0.98rem; cursor:pointer; transition:background .2s ease;
+  }
+  .submit-btn:hover{background:var(--teal-ink);}
+  .form-status{margin-top:14px; font-size:0.85rem; color:var(--teal-deep); font-weight:600; min-height:1.2em;}
+
+  footer{background:var(--teal-ink); color:rgba(255,255,255,0.75); padding:34px 0;}
+  .footer-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; font-size:0.85rem;}
+  .footer-row .logo{color:var(--white);}
+
+  @media (max-width: 880px){
+    .navlinks, .cta-btn{display:none;}
+    .navtoggle{display:block; background:none; border:none; font-size:1.5rem; color:var(--teal-deep); cursor:pointer;}
+    .hero-inner, .about-grid, .contact-grid{grid-template-columns:1fr;}
+    .service-grid{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:1fr 1fr;}
+    .process-row{flex-direction:column;}
+    .process-step{border-left:none; border-top:1px solid rgba(255,255,255,0.18);}
+    .process-step:first-child{border-top:none;}
+  }
+  @media (max-width:520px){
+    .why-grid{grid-template-columns:1fr;}
+    .hero{padding:72px 0 60px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">
+      <span class="mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L14 9L21 9L15.5 13.5L17.5 21L12 16.5L6.5 21L8.5 13.5L3 9L10 9L12 2Z" fill="#2FE6D2"/>
+        </svg>
+      </span>
+      Kim's Sparkle
+    </div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#why">Why Us</a>
+      <a href="#process">How it Works</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="cta-btn">Book a Clean</a>
+    <button class="navtoggle" aria-label="menu">☰</button>
+  </nav>
+</header>
+
+<!-- ================= HERO / DASHBOARD OVERVIEW ================= -->
+<section class="hero" id="top">
+  <div class="sparkle-field" id="sparkleField"></div>
+  <div class="wrap hero-inner">
+    <div>
+      <span class="eyebrow">Kirinyaga's trusted cleaning crew</span>
+      <h1>We bring the <span class="shine">sparkle</span> back to your home and business.</h1>
+      <p class="lead">Kim's Sparkle Enterprise is a full-service cleaning outfit built on one promise: things should look, feel, and smell like new when we're done. From laundry baskets to concrete compounds, we treat every surface like it's our own.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">Request a Free Quote</a>
+        <a href="#services" class="btn-ghost">See Our Services</a>
+      </div>
+      <div class="hero-badges">
+        <div class="badge"><b>4</b>Core Services</div>
+        <div class="badge"><b>100%</b>Satisfaction Focus</div>
+        <div class="badge"><b>Home &amp; Office</b>Coverage</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-copy">
+      <span class="eyebrow">About the enterprise</span>
+      <h2 style="color:var(--teal-deep); margin-top:14px; font-size:2rem; font-weight:800;">Local hands, professional standards.</h2>
+      <p>Kim's Sparkle Enterprise started with a simple frustration: too many cleaning jobs in and around Kirinyaga were rushed, inconsistent, or left half-done. We set out to fix that — building a small, well-trained team that shows up on time, brings the right equipment, and finishes every job to a standard we'd be happy to have in our own homes.</p>
+      <p>Today we serve households, landlords, offices, and event spaces with four core services: laundry, sofa cleaning, cabro and floor scrubbing, and carpet scrubbing. Whether it's a weekly laundry run or a full compound scrub before a big event, our approach stays the same — thorough work, fair pricing, and respect for your space.</p>
+      <div class="about-stats">
+        <div class="stat-card"><b>On-site</b><span>Equipment &amp; supplies brought to you</span></div>
+        <div class="stat-card"><b>Flexible</b><span>One-off jobs or standing schedules</span></div>
+      </div>
+    </div>
+    <div class="about-panel">
+      <h3>What guides our work</h3>
+      <ul>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2FE6D2" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          <span><b style="color:#fff">Show up as promised.</b> Agreed time, agreed scope, no surprises on arrival.</span>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2FE6D2" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          <span><b style="color:#fff">Right tool for the surface.</b> Cabro, carpet, upholstery, and fabric each get their own method — never a one-size scrub.</span>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2FE6D2" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          <span><b style="color:#fff">Price before we start.</b> You know the cost upfront — no inflated bills after the job is done.</span>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2FE6D2" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          <span><b style="color:#fff">Leave it better.</b> A finished job should need nothing further from you but to enjoy the space.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">What we offer</span>
+      <h2>Four services, one standard of clean.</h2>
+      <p>Every job is quoted based on load size or area covered — get in touch and we'll walk you through it before any work begins.</p>
+    </div>
+
+    <div class="service-grid">
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="7"/><path d="M12 9a4 4 0 0 0 0 8"/><path d="M9 3h6l-1 3H10z"/></svg>
+        </div>
+        <h3>Laundry Services</h3>
+        <p class="desc">Washing, drying, ironing, and folding for households and businesses — everyday loads, beddings, curtains, and delicate fabrics handled with care.</p>
+        <div class="service-meta">
+          <span class="chip">Wash &amp; fold</span>
+          <span class="chip">Ironing</span>
+          <span class="chip">Beddings &amp; curtains</span>
+        </div>
+        <div class="service-turnaround"><span>Typical turnaround</span><b>Same day / next day</b></div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v6"/><path d="M2 18h20v2H2z"/><path d="M4 12V9a1 1 0 0 1 1-1h2"/><path d="M20 12V9a1 1 0 0 0-1-1h-2"/></svg>
+        </div>
+        <h3>Sofa Cleaning</h3>
+        <p class="desc">Deep upholstery cleaning that lifts stains, dust, and odours out of your sofas and chairs — fabric-safe methods that don't leave everything soaked for days.</p>
+        <div class="service-meta">
+          <span class="chip">Stain removal</span>
+          <span class="chip">Fabric-safe</span>
+          <span class="chip">Odour treatment</span>
+        </div>
+        <div class="service-turnaround"><span>Typical turnaround</span><b>1–3 hrs dry time</b></div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        </div>
+        <h3>Cabro &amp; Floor Scrubbing</h3>
+        <p class="desc">Heavy-duty scrubbing for cabro driveways, compounds, and hard floors — cutting through grime, moss, and oil stains to restore the original surface.</p>
+        <div class="service-meta">
+          <span class="chip">Driveways &amp; compounds</span>
+          <span class="chip">Oil-stain treatment</span>
+          <span class="chip">Moss removal</span>
+        </div>
+        <div class="service-turnaround"><span>Typical turnaround</span><b>Quoted per m²</b></div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+        </div>
+        <h3>Carpet Scrubbing</h3>
+        <p class="desc">Deep-clean scrubbing for carpets and rugs, in your home or office, that lifts embedded dirt and refreshes colour without over-wetting the backing.</p>
+        <div class="service-meta">
+          <span class="chip">Home &amp; office</span>
+          <span class="chip">Deep extraction</span>
+          <span class="chip">Rugs &amp; wall-to-wall</span>
+        </div>
+        <div class="service-turnaround"><span>Typical turnaround</span><b>Quoted per m²</b></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Recent work</span>
+      <h2>See the results for yourself.</h2>
+      <p>A few jobs from around Kirinyaga. Replace the placeholder frames below with your own before-and-after photos as you complete more work.</p>
+    </div>
+    <div class="gallery-grid">
+
+      <!-- To add a real photo: replace the src="..." below with your image file or link -->
+      <div class="photo-card">
+        <div class="photo-frame">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23EEF8F6'/%3E%3Cg fill='none' stroke='%230B4F4A' stroke-width='2' opacity='0.35'%3E%3Crect x='140' y='110' width='120' height='90' rx='10'/%3E%3Ccircle cx='200' cy='150' r='24'/%3E%3Ccircle cx='200' cy='150' r='15'/%3E%3Crect x='150' y='95' width='20' height='15' rx='2'/%3E%3C/g%3E%3C/svg%3E" alt="Placeholder — add a photo of completed laundry work">
+        </div>
+        <div class="photo-caption"><b>Laundry Services</b><span>ADD PHOTO</span></div>
+      </div>
+
+      <div class="photo-card">
+        <div class="photo-frame">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23EEF8F6'/%3E%3Cg fill='none' stroke='%230B4F4A' stroke-width='2' opacity='0.35'%3E%3Crect x='140' y='110' width='120' height='90' rx='10'/%3E%3Ccircle cx='200' cy='150' r='24'/%3E%3Ccircle cx='200' cy='150' r='15'/%3E%3Crect x='150' y='95' width='20' height='15' rx='2'/%3E%3C/g%3E%3C/svg%3E" alt="Placeholder — add a photo of a cleaned sofa">
+        </div>
+        <div class="photo-caption"><b>Sofa Cleaning</b><span>ADD PHOTO</span></div>
+      </div>
+
+      <div class="photo-card">
+        <div class="photo-frame">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23EEF8F6'/%3E%3Cg fill='none' stroke='%230B4F4A' stroke-width='2' opacity='0.35'%3E%3Crect x='140' y='110' width='120' height='90' rx='10'/%3E%3Ccircle cx='200' cy='150' r='24'/%3E%3Ccircle cx='200' cy='150' r='15'/%3E%3Crect x='150' y='95' width='20' height='15' rx='2'/%3E%3C/g%3E%3C/svg%3E" alt="Placeholder — add a photo of scrubbed cabro or flooring">
+        </div>
+        <div class="photo-caption"><b>Cabro &amp; Floor Scrubbing</b><span>ADD PHOTO</span></div>
+      </div>
+
+      <div class="photo-card">
+        <div class="photo-frame">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23EEF8F6'/%3E%3Cg fill='none' stroke='%230B4F4A' stroke-width='2' opacity='0.35'%3E%3Crect x='140' y='110' width='120' height='90' rx='10'/%3E%3Ccircle cx='200' cy='150' r='24'/%3E%3Ccircle cx='200' cy='150' r='15'/%3E%3Crect x='150' y='95' width='20' height='15' rx='2'/%3E%3C/g%3E%3C/svg%3E" alt="Placeholder — add a photo of a cleaned carpet">
+        </div>
+        <div class="photo-caption"><b>Carpet Scrubbing</b><span>ADD PHOTO</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY US ================= -->
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Why clients choose us</span>
+      <h2>Small enough to care, organised enough to deliver.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="num">Reliability</span>
+        <h4>We keep appointments</h4>
+        <p>Booked time slots are respected — we call ahead if anything changes.</p>
+      </div>
+      <div class="why-card">
+        <span class="num">Care</span>
+        <h4>Surface-appropriate methods</h4>
+        <p>Fabric, cabro, and carpet are cleaned differently, on purpose.</p>
+      </div>
+      <div class="why-card">
+        <span class="num">Transparency</span>
+        <h4>Upfront pricing</h4>
+        <p>You get a quote before we start — no added charges after the fact.</p>
+      </div>
+      <div class="why-card">
+        <span class="num">Flexibility</span>
+        <h4>One-off or recurring</h4>
+        <p>Book a single job or set up a weekly, biweekly, or monthly plan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">How booking works</span>
+      <h2>From enquiry to a spotless finish.</h2>
+    </div>
+    <div class="process-row">
+      <div class="process-step">
+        <span class="step-eyebrow">Enquiry</span>
+        <h4>Tell us what needs cleaning</h4>
+        <p>Send the service, size or quantity, and your location using the form below or a direct call.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-eyebrow">Quote</span>
+        <h4>We confirm price and time</h4>
+        <p>You get a clear quote and an agreed appointment window before anything is scheduled.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-eyebrow">Service</span>
+        <h4>Our team arrives and works</h4>
+        <p>We bring our own equipment and supplies, and walk you through the finished job.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-eyebrow">Follow-up</span>
+        <h4>We check you're satisfied</h4>
+        <p>If anything needs a touch-up, we sort it before considering the job closed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <span class="eyebrow">Get in touch</span>
+      <h2>Let's schedule your clean.</h2>
+      <p>Fill in the form or reach us directly — we usually respond with a quote within the same day.</p>
+      <div class="contact-list">
+        <div class="item">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <div><b>Call or WhatsApp</b><span>+254 7XX XXX XXX (add your number)</span></div>
+        </div>
+        <div class="item">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg></span>
+          <div><b>Email</b><span>hello@kimssparkle.co.ke (add your email)</span></div>
+        </div>
+        <div class="item">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div><b>Service area</b><span>Kirinyaga County and surrounding areas</span></div>
+        </div>
+        <div class="item">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+          <div><b>Hours</b><span>Monday – Saturday, 7:00 AM – 6:00 PM</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <h3>Request a free quote</h3>
+      <p class="note">This form is for demonstration — connect it to your email or WhatsApp to start receiving real bookings.</p>
+      <form id="quoteForm">
+        <div class="form-row">
+          <label for="name">Full name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" required>
+        </div>
+        <div class="form-row">
+          <label for="phone">Phone number</label>
+          <input id="phone" name="phone" type="tel" placeholder="07XX XXX XXX" required>
+        </div>
+        <div class="form-row">
+          <label for="service">Service needed</label>
+          <select id="service" name="service" required>
+            <option value="" disabled selected>Choose a service</option>
+            <option>Laundry Services</option>
+            <option>Sofa Cleaning</option>
+            <option>Cabro &amp; Floor Scrubbing</option>
+            <option>Carpet Scrubbing</option>
+            <option>Not sure / multiple services</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="details">Details (size, quantity, location)</label>
+          <textarea id="details" name="details" rows="3" placeholder="E.g. 3-seater sofa, Wanguru area"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Request</button>
+        <div class="form-status" id="formStatus"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <div class="logo">Kim's Sparkle Enterprise</div>
+    <span>© 2026 Kim's Sparkle Enterprise. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+  // Ambient sparkle particles
+  const field = document.getElementById('sparkleField');
+  const positions = [
+    [8,20],[18,55],[30,15],[42,70],[55,30],[68,60],[78,18],[88,48],[95,75],[15,85],[62,88],[35,42]
+  ];
+  positions.forEach((p, i) => {
+    const s = document.createElement('div');
+    s.className = 'spark';
+    s.style.left = p[0] + '%';
+    s.style.top = p[1] + '%';
+    s.style.animationDelay = (i * 0.35) + 's';
+    field.appendChild(s);
+  });
+
+  // Animate shine meters on load
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.meter .fill').forEach(f => {
+      const target = f.getAttribute('data-target');
+      requestAnimationFrame(() => { f.style.width = target; });
+    });
+  });
+
+  // Demo form handling (no backend wired up)
+  document.getElementById('quoteForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('formStatus').textContent =
+      "Thanks — this is a demo form. Connect it to email/WhatsApp so real requests reach you.";
+  });
+
+  // Mobile nav toggle (simple show/hide)
+  const toggle = document.querySelector('.navtoggle');
+  const links = document.querySelector('.navlinks');
+  toggle.addEventListener('click', () => {
+    const visible = links.style.display === 'flex';
+    links.style.display = visible ? 'none' : 'flex';
+    links.style.flexDirection = 'column';
+    links.style.position = 'absolute';
+    links.style.top = '64px';
+    links.style.right = '28px';
+    links.style.background = '#fff';
+    links.style.padding = '18px 24px';
+    links.style.borderRadius = '14px';
+    links.style.boxShadow = '0 20px 40px -20px rgba(11,79,74,0.35)';
+  });
+</script>
+
+</body>
+</html>
