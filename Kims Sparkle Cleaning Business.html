@@ -1,23 +1,41 @@
+<?php
+$companyName = "Kim's Sparkle Cleaning Enterprise";
+$phoneCall = "+254722403033";
+$phoneDisplay = "0722 403 033";
+$whatsappNumber = "254722403033";
+$whatsappLink = "https://wa.me/254722403033";
+$currentYear = date('Y');
+
+$successMessage = '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = trim($_POST['name'] ?? '');
+    $phone = trim($_POST['phone'] ?? '');
+    $service = trim($_POST['service'] ?? '');
+    $message = trim($_POST['message'] ?? '');
+
+    if ($name !== '' && $phone !== '' && $service !== '') {
+        $successMessage = "Thanks, {$name}! Your request for {$service} has been received. We will contact you on {$phone} shortly.";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- FAVICON (Tab Icon) -->
+
   <link rel="icon" type="image/jpeg" href="https://miaoda-conversation-file.s3cdn.medo.dev/user-eafucvz65fk0/app-eag95mbsywap/20260909/1.jpeg">
   <link rel="apple-touch-icon" href="https://miaoda-conversation-file.s3cdn.medo.dev/user-eafucvz65fk0/app-eag95mbsywap/20260909/1.jpeg">
 
   <title>Kim's Sparkle Cleaning Enterprise | Laundry & Cleaning Services in Mwea, Wang'uru</title>
   <meta name="description" content="Kim's Sparkle Cleaning Enterprise offers sofa, mattress, carpet & house cleaning, move-out cleaning, floor scrubbing and laundry in Mwea & Wang'uru, Kenya. Call or WhatsApp 0722 403 033.">
-  <meta name="keywords" content="cleaning services Mwea, laundry Mwea, sofa cleaning Wang'uru, mattress cleaning Kenya, carpet cleaning Mwea, move-out cleaning, house cleaning Kirinyaga, floor scrubbing, Kim's Sparkle">
+  <meta name="keywords" content="cleaning services Mwea, laundry Mwea, sofa cleaning Wang'uru, mattress cleaning Kenya, carpet cleaning Mwea, move-out cleaning, house cleaning Kirinyaga, floor scrubbing">
   <meta name="author" content="Kim's Sparkle Cleaning Enterprise">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#1a2744">
   <meta name="geo.region" content="KE">
   <meta name="geo.placename" content="Wang'uru, Mwea">
 
-  <!-- Open Graph (WhatsApp, Facebook sharing) -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Kim's Sparkle Cleaning Enterprise">
   <meta property="og:title" content="Kim's Sparkle Cleaning Enterprise | Laundry & Cleaning Services in Mwea, Wang'uru">
@@ -25,113 +43,52 @@
   <meta property="og:image" content="https://miaoda-conversation-file.s3cdn.medo.dev/user-eafucvz65fk0/app-eag95mbsywap/20260909/1.jpeg">
   <meta property="og:locale" content="en_KE">
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Kim's Sparkle Cleaning Enterprise | Laundry & Cleaning Services in Mwea, Wang'uru">
   <meta name="twitter:description" content="Kim's Sparkle Cleaning Enterprise offers sofa, mattress, carpet & house cleaning, move-out cleaning, floor scrubbing and laundry in Mwea & Wang'uru, Kenya. Call or WhatsApp 0722 403 033.">
   <meta name="twitter:image" content="https://miaoda-conversation-file.s3cdn.medo.dev/user-eafucvz65fk0/app-eag95mbsywap/20260909/1.jpeg">
 
-  <!-- Structured data for Google (local business) -->
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": [
-    "LocalBusiness",
-    "LaundryOrDryCleaner"
-  ],
-  "name": "Kim's Sparkle Cleaning Enterprise",
-  "image": "https://miaoda-conversation-file.s3cdn.medo.dev/user-eafucvz65fk0/app-eag95mbsywap/20260909/1.jpeg",
-  "logo": "https://miaoda-conversation-file.s3cdn.medo.dev/user-eafucvz65fk0/app-eag95mbsywap/20260909/1.jpeg",
-  "description": "Kim's Sparkle Cleaning Enterprise offers sofa, mattress, carpet & house cleaning, move-out cleaning, floor scrubbing and laundry in Mwea & Wang'uru, Kenya. Call or WhatsApp 0722 403 033.",
-  "telephone": "+254722403033",
-  "hasMap": "https://www.google.com/maps/place//data=!4m2!3m1!19sChIJvWP3wEYhJhgRVVi7SDL5qTQ",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Between KPLC & Full Gospel Solid Rock Junction",
-    "addressLocality": "Wang'uru, Mwea",
-    "addressRegion": "Kirinyaga County",
-    "addressCountry": "KE"
-  },
-  "areaServed": [
-    "Mwea",
-    "Wang'uru",
-    "Kirinyaga County"
-  ],
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Cleaning & Laundry Services",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Sofa Deep Clean / Vacuum"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Mattress Cleaning / Vacuum"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Residential & Office Cleaning"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Move-Out Cleaning"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Carpet Deep Cleaning"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Laundry Wash"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "House Cleaning Services"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Floor Scrubbing"
-        }
-      }
-    ]
+  {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "LaundryOrDryCleaner"],
+    "name": "Kim's Sparkle Cleaning Enterprise",
+    "image": "https://miaoda-conversation-file.s3cdn.medo.dev/user-eafucvz65fk0/app-eag95mbsywap/20260909/1.jpeg",
+    "logo": "https://miaoda-conversation-file.s3cdn.medo.dev/user-eafucvz65fk0/app-eag95mbsywap/20260909/1.jpeg",
+    "description": "Kim's Sparkle Cleaning Enterprise offers sofa, mattress, carpet & house cleaning, move-out cleaning, floor scrubbing and laundry in Mwea & Wang'uru, Kenya.",
+    "telephone": "+254722403033",
+    "hasMap": "https://www.google.com/maps/place//data=!4m2!3m1!19sChIJvWP3wEYhJhgRVVi7SDL5qTQ",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Between KPLC & Full Gospel Solid Rock Junction",
+      "addressLocality": "Wang'uru, Mwea",
+      "addressRegion": "Kirinyaga County",
+      "addressCountry": "KE"
+    },
+    "areaServed": ["Mwea", "Wang'uru", "Kirinyaga County"],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Cleaning & Laundry Services",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Sofa Deep Clean / Vacuum"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Mattress Cleaning / Vacuum"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Residential & Office Cleaning"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Move-Out Cleaning"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Carpet Deep Cleaning"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Laundry Wash"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "House Cleaning Services"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Floor Scrubbing"}}
+      ]
+    }
   }
-}
   </script>
-  
-  <!-- Font Awesome Icons -->
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* --- BRAND COLOR PALETTE & VARIABLES --- */
     :root {
       --primary-navy: #1a2744;
       --secondary-navy: #111a2e;
@@ -148,7 +105,6 @@
       --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     }
 
-    /* --- RESET & BASIC STYLES --- */
     * {
       margin: 0;
       padding: 0;
@@ -169,6 +125,11 @@
     a {
       text-decoration: none;
       color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
     }
 
     ul {
@@ -218,7 +179,6 @@
       font-size: 1.05rem;
     }
 
-    /* --- NAVIGATION --- */
     .navbar {
       background-color: var(--primary-navy);
       position: sticky;
@@ -231,7 +191,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      height: 80px;
+      min-height: 80px;
+      gap: 15px;
     }
 
     .logo-container {
@@ -264,10 +225,19 @@
 
     .nav-actions {
       display: flex;
+      align-items: center;
       gap: 15px;
     }
 
-    /* --- BUTTON STYLES --- */
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      color: var(--text-light);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -316,10 +286,9 @@
       color: var(--text-light);
     }
 
-    /* --- HERO SECTION --- */
     .hero {
       position: relative;
-      background: linear-gradient(rgba(26, 39, 68, 0.85), rgba(26, 39, 68, 0.90)), 
+      background: linear-gradient(rgba(26, 39, 68, 0.85), rgba(26, 39, 68, 0.90)),
                   url('https://miaoda-conversation-file.s3cdn.medo.dev/user-eafucvz65fk0/app-eag95mbsywap/20260909/2.jpeg');
       background-size: cover;
       background-position: center;
@@ -365,7 +334,6 @@
       gap: 15px;
     }
 
-    /* --- SERVICES SECTION --- */
     .services {
       background-color: var(--bg-light);
     }
@@ -431,7 +399,54 @@
       color: #666;
     }
 
-    /* --- CONTACT SECTION --- */
+    .quote-wrap {
+      background: #f0f4fb;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .quote-form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 15px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--primary-navy);
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: 1px solid #dfe5f0;
+      font: inherit;
+      resize: vertical;
+      background: #fff;
+    }
+
+    .field textarea {
+      min-height: 120px;
+    }
+
+    .form-message {
+      margin-top: 18px;
+      background: rgba(37, 211, 102, 0.12);
+      color: #0f6b3b;
+      border: 1px solid rgba(37, 211, 102, 0.4);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-weight: 600;
+    }
+
     .contact-section {
       background-color: #fff;
     }
@@ -465,7 +480,6 @@
       flex-wrap: wrap;
     }
 
-    /* --- MAP SECTION --- */
     .map-section {
       background-color: var(--bg-light);
     }
@@ -494,6 +508,7 @@
       align-items: center;
       gap: 15px;
       box-shadow: var(--shadow);
+      flex-wrap: wrap;
     }
 
     .location-icon {
@@ -501,13 +516,11 @@
       color: var(--accent-pink);
     }
 
-    .location-card { flex-wrap: wrap; }
     .location-info h4 {
       color: var(--primary-navy);
       font-size: 1.1rem;
     }
 
-    /* --- FOOTER --- */
     .footer {
       background-color: var(--secondary-navy);
       color: var(--text-light);
@@ -558,7 +571,29 @@
       color: #707b93;
     }
 
-    /* --- RESPONSIVE MEDIA QUERIES --- */
+    .floating-whatsapp {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: var(--whatsapp-green);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      box-shadow: 0 12px 26px rgba(37, 211, 102, 0.4);
+      z-index: 999;
+      transition: var(--transition);
+    }
+
+    .floating-whatsapp:hover {
+      transform: translateY(-3px) scale(1.02);
+      background: var(--whatsapp-green-hover);
+    }
+
     @media (max-width: 768px) {
       .hero h1 {
         font-size: 2.1rem;
@@ -569,10 +604,25 @@
       }
 
       .navbar-container {
-        height: auto;
         padding: 15px 0;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .nav-toggle {
+        display: inline-block;
+      }
+
+      .nav-actions {
+        width: 100%;
+        display: none;
         flex-direction: column;
-        gap: 15px;
+        align-items: stretch;
+        padding-top: 10px;
+      }
+
+      .nav-actions.open {
+        display: flex;
       }
 
       .contact-wrapper {
@@ -591,29 +641,28 @@
   </style>
 </head>
 <body>
-
-  <!-- NAVBAR -->
   <nav class="navbar">
     <div class="container navbar-container">
       <div class="logo-container">
-        <img src="https://miaoda-conversation-file.s3cdn.medo.dev/user-eafucvz65fk0/app-eag95mbsywap/20260909/1.jpeg" alt="Kim's Sparkle Cleaning Enterprise logo - laundry and cleaning services in Mwea" width="55" height="55" class="logo-img" onerror="this.style.display='none'">
+        <img class="logo-img" src="https://miaoda-conversation-file.s3cdn.medo.dev/user-eafucvz65fk0/app-eag95mbsywap/20260909/1.jpeg" alt="Kim's Sparkle Cleaning Enterprise logo - cleaning and laundry service in Mwea, Kenya">
         <div class="logo-text">
           <div class="brand-name">Kim's Sparkle</div>
           <span>Cleaning Enterprise</span>
         </div>
       </div>
-      <div class="nav-actions">
-        <a href="https://wa.me/254722403033" target="_blank" class="btn btn-whatsapp">
-          <i class="fab fa-whatsapp"></i> WhatsApp
-        </a>
-        <a href="tel:+254722403033" class="btn btn-phone">
-          <i class="fas fa-phone-alt"></i> Call Us
-        </a>
+
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <div class="nav-actions" id="navActions">
+        <a href="#services" class="btn btn-outline">Services</a>
+        <a href="#contact" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="tel:+254722403033" class="btn btn-phone"><i class="fas fa-phone-alt"></i> Call Us</a>
       </div>
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
   <section class="hero">
     <div class="container">
       <div class="hero-content">
@@ -621,7 +670,7 @@
         <h1>Shine & Freshness Delivered to Your Doorstep</h1>
         <p>Your trusted partner for residential, office, mattress, sofa deep cleaning, and full laundry services in Mwea, Kenya.</p>
         <div class="hero-buttons">
-          <a href="https://wa.me/254722403033" target="_blank" class="btn btn-whatsapp">
+          <a href="<?php echo $whatsappLink; ?>" target="_blank" rel="noopener" class="btn btn-whatsapp">
             <i class="fab fa-whatsapp"></i> Request Service via WhatsApp
           </a>
           <a href="tel:0722403033" class="btn btn-outline">
@@ -632,7 +681,6 @@
     </div>
   </section>
 
-  <!-- SERVICES SECTION -->
   <section class="section-padding services" id="services">
     <div class="container">
       <div class="section-title">
@@ -647,74 +695,50 @@
       </div>
 
       <div class="services-grid">
-        <!-- Service 1 -->
         <div class="service-card">
-          <div class="service-icon">
-            <i class="fas fa-couch"></i>
-          </div>
+          <div class="service-icon"><i class="fas fa-couch"></i></div>
           <h3>Sofa Deep Clean / Vacuum</h3>
           <p>Deep steam and vacuum cleaning to remove stains, dirt, dust mites, and odors from your sofa.</p>
         </div>
 
-        <!-- Service 2 -->
         <div class="service-card">
-          <div class="service-icon">
-            <i class="fas fa-bed"></i>
-          </div>
+          <div class="service-icon"><i class="fas fa-bed"></i></div>
           <h3>Mattress Cleaning / Vacuum</h3>
-          <p>Hygienic deep cleaning and vacuuming for a allergen-free, fresh, and healthy sleep environment.</p>
+          <p>Hygienic deep cleaning and vacuuming for an allergen-free, fresh, and healthy sleep environment.</p>
         </div>
 
-        <!-- Service 3 -->
         <div class="service-card">
-          <div class="service-icon">
-            <i class="fas fa-building"></i>
-          </div>
+          <div class="service-icon"><i class="fas fa-building"></i></div>
           <h3>Residential & Office Cleaning</h3>
           <p>Regular or customized cleaning packages tailored for homes, apartments, and business offices.</p>
         </div>
 
-        <!-- Service 4 -->
         <div class="service-card">
-          <div class="service-icon">
-            <i class="fas fa-truck-ramps"></i>
-          </div>
+          <div class="service-icon"><i class="fas fa-truck-ramps"></i></div>
           <h3>Move-Out Cleaning</h3>
           <p>Thorough end-of-tenancy deep clean to ensure premises are spotless for incoming occupants.</p>
         </div>
 
-        <!-- Service 5 -->
         <div class="service-card">
-          <div class="service-icon">
-            <i class="fas fa-rug"></i>
-          </div>
+          <div class="service-icon"><i class="fas fa-rug"></i></div>
           <h3>Carpet Deep Cleaning</h3>
           <p>High-powered extraction cleaning to remove tough stains, grime, and restore carpet fibers.</p>
         </div>
 
-        <!-- Service 6 -->
         <div class="service-card">
-          <div class="service-icon">
-            <i class="fas fa-tshirt"></i>
-          </div>
+          <div class="service-icon"><i class="fas fa-tshirt"></i></div>
           <h3>Laundry Wash</h3>
           <p>Fast, reliable, and gentle clothes washing, drying, and folding service.</p>
         </div>
 
-        <!-- Service 7 -->
         <div class="service-card">
-          <div class="service-icon">
-            <i class="fas fa-broom"></i>
-          </div>
+          <div class="service-icon"><i class="fas fa-broom"></i></div>
           <h3>House Cleaning Services</h3>
           <p>Comprehensive general house cleaning covering kitchens, bathrooms, living areas, and dusting.</p>
         </div>
 
-        <!-- Service 8 -->
         <div class="service-card">
-          <div class="service-icon">
-            <i class="fas fa-soap"></i>
-          </div>
+          <div class="service-icon"><i class="fas fa-soap"></i></div>
           <h3>Floor Scrubbing</h3>
           <p>Heavy-duty floor cleaning and scrubbing for tile, concrete, and hard surfaces.</p>
         </div>
@@ -722,15 +746,65 @@
     </div>
   </section>
 
-  <!-- CONTACT SECTION -->
+  <section class="section-padding" id="quote">
+    <div class="container">
+      <div class="section-title">
+        <h2>Request a Free Quote</h2>
+        <p>Tell us what you need and we will guide you on the best cleaning package.</p>
+      </div>
+
+      <div class="quote-wrap">
+        <?php if (!empty($successMessage)): ?>
+          <div class="form-message"><?php echo htmlspecialchars($successMessage, ENT_QUOTES, 'UTF-8'); ?></div>
+        <?php endif; ?>
+
+        <form class="quote-form" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8'); ?>">
+          <div class="field">
+            <label for="name">Full Name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required>
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone Number</label>
+            <input id="phone" name="phone" type="tel" placeholder="0722 403 033" required>
+          </div>
+
+          <div class="field">
+            <label for="service">Service Needed</label>
+            <select id="service" name="service" required>
+              <option value="">Select a service</option>
+              <option value="Sofa Deep Cleaning">Sofa Deep Cleaning</option>
+              <option value="Mattress Cleaning">Mattress Cleaning</option>
+              <option value="House Cleaning">House Cleaning</option>
+              <option value="Office Cleaning">Office Cleaning</option>
+              <option value="Move-Out Cleaning">Move-Out Cleaning</option>
+              <option value="Carpet Cleaning">Carpet Cleaning</option>
+              <option value="Laundry Wash">Laundry Wash</option>
+              <option value="Floor Scrubbing">Floor Scrubbing</option>
+            </select>
+          </div>
+
+          <div class="field" style="grid-column: 1 / -1;">
+            <label for="message">Project Details</label>
+            <textarea id="message" name="message" placeholder="Tell us about your cleaning needs"></textarea>
+          </div>
+
+          <div style="grid-column: 1 / -1; display:flex; justify-content:center;">
+            <button type="submit" class="btn btn-phone">Send Request</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <section class="section-padding contact-section" id="contact">
     <div class="container">
       <div class="contact-wrapper">
         <h3>Ready to Make Your Space Sparkle?</h3>
         <p>Contact us today to discuss your cleaning needs. Price will be agreed upon request!</p>
-        
+
         <div class="contact-btns">
-          <a href="https://wa.me/254722403033" target="_blank" class="btn btn-whatsapp">
+          <a href="<?php echo $whatsappLink; ?>" target="_blank" rel="noopener" class="btn btn-whatsapp">
             <i class="fab fa-whatsapp"></i> Request Service via WhatsApp
           </a>
           <a href="tel:0722403033" class="btn btn-phone">
@@ -741,7 +815,6 @@
     </div>
   </section>
 
-  <!-- MAP SECTION -->
   <section class="section-padding map-section" id="location">
     <div class="container">
       <div class="section-title">
@@ -750,20 +823,15 @@
       </div>
 
       <div class="map-container">
-        <!-- Google Maps Embed: pinned to the shop listing -->
-        <iframe 
-          src="https://maps.google.com/maps?q=Kim's+Sparkle+Laundry+and+Cleaning,+Wang'uru,+Kenya&z=17&output=embed" 
-          allowfullscreen="" 
-          loading="lazy" 
-          referrerpolicy="no-referrer-when-downgrade"
+        <iframe
+          src="https://maps.google.com/maps?q=Kim's+Sparkle+Laundry+and+Cleaning,+Wang'uru,+Kenya&z=17&output=embed"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
           title="Kim's Sparkle Cleaning Enterprise Location">
         </iframe>
       </div>
 
       <div class="location-card">
-        <div class="location-icon">
-          <i class="fas fa-map-marker-alt"></i>
-        </div>
+        <div class="location-icon"><i class="fas fa-map-marker-alt"></i></div>
         <div class="location-info">
           <h4>Physical Location</h4>
           <p>Between KPLC & Full Gospel Solid Rock Junction, Mwea, Kenya</p>
@@ -775,7 +843,6 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
       <div class="footer-content">
@@ -783,31 +850,40 @@
           <h3>Kim's Sparkle Cleaning Enterprise</h3>
           <p>Providing premium, reliable, and professional laundry & cleaning services throughout Mwea and surrounding areas.</p>
         </div>
-        
+
         <div class="footer-contact">
           <h4>Quick Contact</h4>
           <ul>
-            <li>
-              <i class="fas fa-phone-alt"></i>
-              <span>0722 403 033</span>
-            </li>
-            <li>
-              <i class="fab fa-whatsapp"></i>
-              <span>+254 722 403 033</span>
-            </li>
-            <li>
-              <i class="fas fa-map-marker-alt"></i>
-              <span>Between KPLC & Full Gospel Solid Rock Junction, Mwea</span>
-            </li>
+            <li><i class="fas fa-phone-alt"></i><span>0722 403 033</span></li>
+            <li><i class="fab fa-whatsapp"></i><span>+254 722 403 033</span></li>
+            <li><i class="fas fa-map-marker-alt"></i><span>Between KPLC & Full Gospel Solid Rock Junction, Mwea</span></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2026 Kim's Sparkle Cleaning Enterprise. All Rights Reserved.</p>
+        <p>&copy; <?php echo $currentYear; ?> Kim's Sparkle Cleaning Enterprise. All Rights Reserved.</p>
       </div>
     </div>
   </footer>
 
+  <a class="floating-whatsapp" href="<?php echo $whatsappLink; ?>" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggleButton = document.querySelector('.nav-toggle');
+      const navActions = document.getElementById('navActions');
+
+      if (toggleButton && navActions) {
+        toggleButton.addEventListener('click', function () {
+          navActions.classList.toggle('open');
+          const expanded = toggleButton.getAttribute('aria-expanded') === 'true';
+          toggleButton.setAttribute('aria-expanded', String(!expanded));
+        });
+      }
+    });
+  </script>
 </body>
 </html>
