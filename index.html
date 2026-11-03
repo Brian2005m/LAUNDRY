@@ -773,7 +773,7 @@
           </div>
 
           <div style="grid-column: 1 / -1; display:flex; justify-content:center;">
-            <button type="submit" class="btn btn-phone">Send Request</button>
+            <button type="submit" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Send Quote via WhatsApp</button>
           </div>
         </form>
       </div>
@@ -884,7 +884,25 @@
             return;
           }
 
-          formMessage.textContent = `Thanks, ${name}! Your request for ${service} has been received. We will contact you on ${phone} shortly.`;
+          const details = document.getElementById('message').value.trim();
+          const lines = [
+            "Hello Kim's Sparkle Cleaning Enterprise, I would like to request a quote.",
+            '',
+            `Name: ${name}`,
+            `Phone: ${phone}`,
+            `Service: ${service}`
+          ];
+          if (details) lines.push(`Details: ${details}`);
+
+          const whatsappUrl = `https://wa.me/254722403033?text=${encodeURIComponent(lines.join('\n'))}`;
+          const opened = window.open(whatsappUrl, '_blank');
+          if (opened) {
+            opened.opener = null;
+          } else {
+            window.location.href = whatsappUrl;
+          }
+
+          formMessage.textContent = `Thanks, ${name}! WhatsApp is opening with your quote request for ${service}. Just tap send to reach us.`;
           formMessage.classList.add('show');
           quoteForm.reset();
         });
