@@ -8,8 +8,8 @@
   <link rel="apple-touch-icon" href="https://miaoda-conversation-file.s3cdn.medo.dev/user-eafucvz65fk0/app-eag95mbsywap/20260909/1.jpeg">
 
   <title>Kim's Sparkle Cleaning Enterprise | Laundry & Cleaning Services in Mwea, Wang'uru</title>
-  <meta name="description" content="Kim's Sparkle Cleaning Enterprise offers sofa, mattress, carpet & house cleaning, move-out cleaning, floor scrubbing and laundry in Mwea & Wang'uru, Kenya. Call us today!">
-  <meta name="keywords" content="cleaning services Mwea, laundry Mwea, sofa cleaning Wang'uru, mattress cleaning Kenya, carpet cleaning Mwea, move-out cleaning, house cleaning Kirinyaga, floor scrubbing Kenya, office cleaning Mwea">
+  <meta name="description" content="Kim's Sparkle Cleaning Enterprise offers sofa, mattress, carpet & house cleaning, move-out cleaning, floor scrubbing and laundry in Mwea & Wang'uru, Kenya. Call us [...]">
+  <meta name="keywords" content="cleaning services Mwea, laundry Mwea, sofa cleaning Wang'uru, mattress cleaning Kenya, carpet cleaning Mwea, move-out cleaning, house cleaning Kirinyaga, floor scrubbing[...]">
   <meta name="author" content="Kim's Sparkle Cleaning Enterprise">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#1a2744">
@@ -25,7 +25,7 @@
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Kim's Sparkle Cleaning Enterprise | Laundry & Cleaning Services in Mwea, Wang'uru">
-  <meta name="twitter:description" content="Kim's Sparkle Cleaning Enterprise offers sofa, mattress, carpet & house cleaning, move-out cleaning, floor scrubbing and laundry in Mwea & Wang'uru, Kenya.">
+  <meta name="twitter:description" content="Kim's Sparkle Cleaning Enterprise offers sofa, mattress, carpet & house cleaning, move-out cleaning, floor scrubbing and laundry in Mwea & Wang'uru, Kenya.[...]">
   <meta name="twitter:image" content="https://miaoda-conversation-file.s3cdn.medo.dev/user-eafucvz65fk0/app-eag95mbsywap/20260909/1.jpeg">
 
   <script type="application/ld+json">
@@ -629,7 +629,7 @@
   <nav class="navbar">
     <div class="container navbar-container">
       <div class="logo-container">
-        <img class="logo-img" src="https://miaoda-conversation-file.s3cdn.medo.dev/user-eafucvz65fk0/app-eag95mbsywap/20260909/1.jpeg" alt="Kim's Sparkle Cleaning Enterprise logo - cleaning and laundry services in Mwea, Kenya">
+        <img class="logo-img" src="https://miaoda-conversation-file.s3cdn.medo.dev/user-eafucvz65fk0/app-eag95mbsywap/20260909/1.jpeg" alt="Kim's Sparkle Cleaning Enterprise logo - cleaning and laundr[...]">
         <div class="logo-text">
           <div class="brand-name">Kim's Sparkle</div>
           <span>Cleaning Enterprise</span>
@@ -642,7 +642,7 @@
 
       <div class="nav-actions" id="navActions">
         <a href="#services" class="btn btn-outline">Services</a>
-        <a href="https://wa.me/254722403033?text=Hello%20Kim%27s%20Sparkle%20Cleaning%20Enterprise%2C%20I%20would%20like%20to%20request%20a%20cleaning%20service." class="btn btn-whatsapp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="https://wa.me/254722403033?text=Hello%20Kim%27s%20Sparkle%20Cleaning%20Enterprise%2C%20I%20would%20like%20to%20request%20a%20cleaning%20service." class="btn btn-whatsapp" target="_blank" rel="noopener">WhatsApp</a>
         <a href="tel:+254722403033" class="btn btn-phone"><i class="fas fa-phone-alt"></i> Call Us</a>
       </div>
     </div>
@@ -850,7 +850,7 @@
     </div>
   </footer>
 
-  <a class="floating-whatsapp" href="https://wa.me/254722403033?text=Hello%20Kim%27s%20Sparkle%20Cleaning%20Enterprise%2C%20I%20would%20like%20to%20request%20a%20cleaning%20service." target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+  <a class="floating-whatsapp" href="https://wa.me/254722403033?text=Hello%20Kim%27s%20Sparkle%20Cleaning%20Enterprise%2C%20I%20would%20like%20to%20request%20a%20cleaning%20service." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
 
@@ -877,6 +877,7 @@
           const name = document.getElementById('name').value.trim();
           const phone = document.getElementById('phone').value.trim();
           const service = document.getElementById('service').value.trim();
+          const details = document.getElementById('message').value.trim();
 
           if (!name || !phone || !service) {
             formMessage.textContent = 'Please fill in your name, phone number, and service needed.';
@@ -884,9 +885,23 @@
             return;
           }
 
-          formMessage.textContent = `Thanks, ${name}! Your request for ${service} has been received. We will contact you on ${phone} shortly.`;
+          const message = [
+            "Hello Kim's Sparkle Cleaning Enterprise, I'd like to request a quote.",
+            `Name: ${name}`,
+            `Phone: ${phone}`,
+            `Service: ${service}`,
+            details ? `Project details: ${details}` : ''
+          ].filter(Boolean).join('\n');
+
+          formMessage.textContent = 'Opening WhatsApp with your quote request…';
           formMessage.classList.add('show');
           quoteForm.reset();
+
+          window.open(
+            `https://wa.me/254722403033?text=${encodeURIComponent(message)}`,
+            '_blank',
+            'noopener,noreferrer'
+          );
         });
       }
     });
