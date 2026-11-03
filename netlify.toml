@@ -1,0 +1,21 @@
+[build]
+  publish = "."
+
+# Send visitors and search engines from old page addresses to the homepage
+[[redirects]]
+  from = "/Kims Sparkle Cleaning Business*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/kims-sparkle-enterprise*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/Untitled-3*"
+  to = "/"
+  status = 301
+  force = true
