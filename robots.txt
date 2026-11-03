@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kimssparkle.netlify.app/sitemap.xml
